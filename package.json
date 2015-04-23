@@ -1,6 +1,6 @@
 {
   "name": "help-my-views",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A collection of helpful view helpers.",
   "main": "index.js",
   "scripts": {
@@ -12,10 +12,14 @@
   },
   "keywords": [
     "views",
-    "helpers"
+    "helpers",
+    "templates",
   ],
   "author": "Steve Herschleb <steve.herschleb@gmail.com>",
-  "license": "MIT",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/steveherschleb/help-my-views/blob/master/LICENSE"
+  },
   "bugs": {
     "url": "https://github.com/steveherschleb/help-my-views/issues"
   },
