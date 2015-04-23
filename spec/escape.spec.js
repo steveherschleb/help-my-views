@@ -53,6 +53,16 @@ describe('It should escape the HTML input', function () {
     done();
   });
   
+  it('with a single ` symbol', function (done) {
+    expect(helpers.escape('`')).toBe('&#x60;');
+    done();
+  });
+  
+  it('with multiple ` symbols', function (done) {
+    expect(helpers.escape('``')).toBe('&#x60;&#x60;');
+    done();
+  });
+  
   it('with a typical link', function (done) {
     expect(helpers.escape('<a href="http://google.com">Click Me!</a>')).toBe('&lt;a href=&quot;http://google.com&quot;&gt;Click Me!&lt;/a&gt;');
     done();
@@ -111,6 +121,16 @@ describe('unescape the HTML input', function () {
   it('with multiple " codes', function (done) {
     expect(helpers.unescape('&quot;&quot;')).toBe('""');
     done();
+  
+  it('with a single ` code', function (done) {
+    expect(helpers.escape('&#x60;')).toBe('`');
+    done();
+  });
+  
+  it('with multiple ` codes', function (done) {
+    expect(helpers.escape('&#x60;&#x60;')).toBe('``');
+    done();
+  });
   });
   
   it('with a typical escaped link', function (done) {

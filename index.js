@@ -12,7 +12,8 @@ module.exports = {
                .replace(/</g, '&lt;')
                .replace(/>/g, '&gt;')
                .replace(/"/g, '&quot;')
-               .replace(/'/g, '&#39;');
+               .replace(/'/g, '&#39;')
+               .replace(/`/g, '&#x60;');
   },
 
   
@@ -23,7 +24,8 @@ module.exports = {
                .replace(/&lt;/g, '<')
                .replace(/&gt;/g, '>')
                .replace(/&quot;/g, '"')
-               .replace(/&#39;/g, '\'');
+               .replace(/&#39;/g, '\'')
+               .replace(/&#x60;/g, '`');
   },
 
   
