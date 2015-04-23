@@ -1,0 +1,31 @@
+{
+  "name": "help-my-views",
+  "version": "0.0.1",
+  "description": "A collection of helpful view helpers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/jasmine/bin/jasmine.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steveherschleb/help-my-views.git"
+  },
+  "keywords": [
+    "views",
+    "helpers"
+  ],
+  "author": "Steve Herschleb <steve.herschleb@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steveherschleb/help-my-views/issues"
+  },
+  "homepage": "https://github.com/steveherschleb/help-my-views",
+  "devDependencies": {
+    "jasmine": "^2.2.1"
+  },
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "htmlstrip-native": "^0.1.1",
+    "underscore": "^1.8.3"
+  }
+}
