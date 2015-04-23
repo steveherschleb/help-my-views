@@ -36,7 +36,7 @@ Now you have access to all the view helpers in your view, as shown here for an e
       body
         - var myCats = ['Fluffy', 'Mr. Snuggles', 'Ms. Fancy Feet']
 
-        h1 #{helpers.titleCase('I love my ' + myCats.length + helpers.pluralize('cat', myCats)}
+        h1 #{helpers.titleCase('I love my ' + myCats.length + ' ' + helpers.pluralize('cat', myCats)}
 
         - var nav = helpers.linkify('/kitties?cat=', myCats)
         
