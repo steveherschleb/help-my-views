@@ -79,7 +79,7 @@ capitalized, even the little ones. So you'd get, "To Kill A Mocking Bird" and no
 
 ### fractions(text)
 
-It takes a string and transforms some of the decimal numbers into pretty fractions using <sup>'s and <sub>'s. It will transform every number that it can in
+It takes a string and transforms some of the decimal numbers into pretty fractions using &lt;sup&gt;'s and &lt;sub&gt;'s. It will transform every number that it can in
 your string. Currently it supports: halfs, thirds, fourths, fifths, sixths, eighths and tenths since these are likely the most common, but it's easy to add
 more if needed. For numbers with repeating decimals (i.e. 1.3333333 ...), it checks the first 3 decimal digits.
 
