@@ -89,21 +89,21 @@ module.exports = {
   },
 
 
-  limit: function (text, limit) {
+  limit: function (text, length) {
     'use strict';
     
     //Default value
-    limit = limit || 10;
+    length = length || 10;
 
     if (typeof(text) === 'undefined') {
       return '';
     }
 
-    if (text.length <= limit) {
+    if (text.length <= length) {
       return text;
     }
     
-    return text.slice(0,limit-3) + '...';
+    return text.slice(0,length-3) + '...';
   },
 
 
