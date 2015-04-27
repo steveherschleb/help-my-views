@@ -23,6 +23,16 @@ describe('It should format a string To Title Case', function () {
 describe('It should limit a strings length', function () {
   'use strict';
   
+  it('with an empty string', function (done) {
+    expect(helpers.limit()).toBe('');
+    done();
+  });
+  
+  it('with a blank string', function (done) {
+    expect(helpers.limit('')).toBe('');
+    done();
+  });
+  
   it('with a short string', function (done) {
     expect(helpers.limit('Hello')).toBe('Hello');
     done();
@@ -48,6 +58,16 @@ describe('It should limit a strings length', function () {
 describe('It should convert numbers to fractions', function () {
   'use strict';
   
+  it('with an empty input', function (done) {
+    expect(helpers.fractions()).toBe('');
+    done();
+  });
+  
+  it('with a blank input', function (done) {
+    expect(helpers.fractions('')).toBe('');
+    done();
+  });
+
   it('with a leading zero', function (done) {
     expect(helpers.fractions('0.25')).toBe('<sup>1</sup>/<sub>4</sub>');
     done();
@@ -68,15 +88,20 @@ describe('It should convert numbers to fractions', function () {
     done();
   });
   
-  it('with a typical recipe text', function (done) {
-    var str = 'First, mix 1.5 t salt with 1.333 T butter.';
-    expect(helpers.fractions(str)).toBe('First, mix 1 <sup>1</sup>/<sub>2</sub> t salt with 1 <sup>1</sup>/<sub>3</sub> T butter.');
+  it('with a decimal that it does not know the fraction for', function (done) {
+    expect(helpers.fractions('PI is close to 3.14')).toBe('PI is close to 3.14');
     done();
   });
   
   it('with a typical recipe text', function (done) {
-    var str = 'First, mix 1.5t salt with 1.333T butter.';
-    expect(helpers.fractions(str)).toBe('First, mix 1 <sup>1</sup>/<sub>2</sub>t salt with 1 <sup>1</sup>/<sub>3</sub>T butter.');
+    var str = 'First, mix 1.5 t salt with 1.333 T butter. Add 1 cup of milk.';
+    expect(helpers.fractions(str)).toBe('First, mix 1 <sup>1</sup>/<sub>2</sub> t salt with 1 <sup>1</sup>/<sub>3</sub> T butter. Add 1 cup of milk.');
+    done();
+  });
+  
+  it('with a typical recipe text', function (done) {
+    var str = 'First, mix 1.5t salt with 1.333T butter. Add 1 cup of milk.';
+    expect(helpers.fractions(str)).toBe('First, mix 1 <sup>1</sup>/<sub>2</sub>t salt with 1 <sup>1</sup>/<sub>3</sub>T butter. Add 1 cup of milk.');
     done();
   });
   
@@ -172,6 +197,11 @@ describe('It should pluralize an English word', function () {
     done();
   });
   
+  it('with the check missing', function (done) {
+    expect(helpers.pluralize('dog')).toBe('dog');
+    done();
+  });
+  
   it('with a word ending in "y" that should be "ies"', function (done) {
     expect(helpers.pluralize('category', true )).toBe('categories');
     expect(helpers.pluralize('city', true )).toBe('cities');
@@ -194,6 +224,12 @@ describe('It should pluralize an English word', function () {
   it('with a word ending in "s" that should be "es"', function (done) {
     expect(helpers.pluralize('kiss', true )).toBe('kisses');
     expect(helpers.pluralize('miss', true )).toBe('misses');
+    done();
+  });
+  
+  it('with a word ending in "o" that should be "es"', function (done) {
+    expect(helpers.pluralize('potato', true )).toBe('potatoes');
+    expect(helpers.pluralize('radio', true )).toBe('radios');
     done();
   });
   

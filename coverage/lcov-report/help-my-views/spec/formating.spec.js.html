@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for help-my-views/spec/formating.spec.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">help-my-views/spec/formating.spec.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">100% <small>(159 / 159)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">100% <small>(46 / 46)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">100% <small>(159 / 159)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">help-my-views/spec/</a> &#187; formating.spec.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var helpers = require('../index');
+&nbsp;
+describe('It should format a string To Title Case', function () {
+  'use strict';
+&nbsp;
+  it('with string in all lower case', function (done) {
+    expect(helpers.titleCase('hello, world!')).toBe('Hello, World!');
+    done();
+  });
+  
+  it('with string in all UPPER CASE', function (done) {
+    expect(helpers.titleCase('HELLO, WORLD!')).toBe('Hello, World!');
+    done();
+  });
+  
+  it('with string already in Title Case', function (done) {
+    expect(helpers.titleCase('Hello, World!')).toBe('Hello, World!');
+    done();
+  });
+});
+&nbsp;
+&nbsp;
+describe('It should limit a strings length', function () {
+  'use strict';
+  
+  it('with an empty string', function (done) {
+    expect(helpers.limit()).toBe('');
+    done();
+  });
+  
+  it('with a blank string', function (done) {
+    expect(helpers.limit('')).toBe('');
+    done();
+  });
+  
+  it('with a short string', function (done) {
+    expect(helpers.limit('Hello')).toBe('Hello');
+    done();
+  });
+  
+  it('with a string longer than the default', function (done) {
+    expect(helpers.limit('Hello, World!')).toBe('Hello, ...');
+    done();
+  });
+  
+  it('with a string shorter than the supplied limit', function (done) {
+    expect(helpers.limit('Hello, World!', 30)).toBe('Hello, World!');
+    done();
+  });
+  
+  it('with a string longer than the supplied limit', function (done) {
+    expect(helpers.limit('Hello, World!', 8)).toBe('Hello...');
+    done();
+  });
+});
+&nbsp;
+&nbsp;
+describe('It should convert numbers to fractions', function () {
+  'use strict';
+  
+  it('with an empty input', function (done) {
+    expect(helpers.fractions()).toBe('');
+    done();
+  });
+  
+  it('with a blank input', function (done) {
+    expect(helpers.fractions('')).toBe('');
+    done();
+  });
+&nbsp;
+  it('with a leading zero', function (done) {
+    expect(helpers.fractions('0.25')).toBe('&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;4&lt;/sub&gt;');
+    done();
+  });
+  
+  it('without a leading zero', function (done) {
+    expect(helpers.fractions('.25')).toBe('&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;4&lt;/sub&gt;');
+    done();
+  });
+  
+  it('with a fraction greater than 1', function (done) {
+    expect(helpers.fractions('2.25')).toBe('2 &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;4&lt;/sub&gt;');
+    done();
+  });
+  
+  it('with more than one fraction', function (done) {
+    expect(helpers.fractions('2.25 to 2.5')).toBe('2 &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;4&lt;/sub&gt; to 2 &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;2&lt;/sub&gt;');
+    done();
+  });
+  
+  it('with a decimal that it does not know the fraction for', function (done) {
+    expect(helpers.fractions('PI is close to 3.14')).toBe('PI is close to 3.14');
+    done();
+  });
+  
+  it('with a typical recipe text', function (done) {
+    var str = 'First, mix 1.5 t salt with 1.333 T butter. Add 1 cup of milk.';
+    expect(helpers.fractions(str)).toBe('First, mix 1 &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;2&lt;/sub&gt; t salt with 1 &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt; T butter. Add 1 cup of milk.');
+    done();
+  });
+  
+  it('with a typical recipe text', function (done) {
+    var str = 'First, mix 1.5t salt with 1.333T butter. Add 1 cup of milk.';
+    expect(helpers.fractions(str)).toBe('First, mix 1 &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;2&lt;/sub&gt;t salt with 1 &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;T butter. Add 1 cup of milk.');
+    done();
+  });
+  
+  it('using tenths', function (done) {
+    expect(helpers.fractions('.1 .3 .7 .9')).toBe('&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;10&lt;/sub&gt; &lt;sup&gt;3&lt;/sup&gt;/&lt;sub&gt;10&lt;/sub&gt; &lt;sup&gt;7&lt;/sup&gt;/&lt;sub&gt;10&lt;/sub&gt; &lt;sup&gt;9&lt;/sup&gt;/&lt;sub&gt;10&lt;/sub&gt;');
+    done();
+  });
+  
+  it('using eighths', function (done) {
+    expect(helpers.fractions('.125 .375 .625 .875')).toBe('&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;8&lt;/sub&gt; &lt;sup&gt;3&lt;/sup&gt;/&lt;sub&gt;8&lt;/sub&gt; &lt;sup&gt;5&lt;/sup&gt;/&lt;sub&gt;8&lt;/sub&gt; &lt;sup&gt;7&lt;/sup&gt;/&lt;sub&gt;8&lt;/sub&gt;');
+    done();
+  });
+  
+  it('using sixths', function (done) {
+    expect(helpers.fractions('.167 .833')).toBe('&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;6&lt;/sub&gt; &lt;sup&gt;5&lt;/sup&gt;/&lt;sub&gt;6&lt;/sub&gt;');
+    done();
+  });
+&nbsp;
+  it('using fifths', function (done) {
+    expect(helpers.fractions('.2 .4 .6 .8')).toBe('&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;5&lt;/sub&gt; &lt;sup&gt;2&lt;/sup&gt;/&lt;sub&gt;5&lt;/sub&gt; &lt;sup&gt;3&lt;/sup&gt;/&lt;sub&gt;5&lt;/sub&gt; &lt;sup&gt;4&lt;/sup&gt;/&lt;sub&gt;5&lt;/sub&gt;');
+    done();
+  });
+  
+  it('using quarters', function (done) {
+    expect(helpers.fractions('.25 .5 .75')).toBe('&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;4&lt;/sub&gt; &lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;2&lt;/sub&gt; &lt;sup&gt;3&lt;/sup&gt;/&lt;sub&gt;4&lt;/sub&gt;');
+    done();
+  });
+  
+  it('using thirds', function (done) {
+    expect(helpers.fractions('.333 .667')).toBe('&lt;sup&gt;1&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt; &lt;sup&gt;2&lt;/sup&gt;/&lt;sub&gt;3&lt;/sub&gt;');
+    done();
+  });
+});
+&nbsp;
+&nbsp;
+describe('It should build an array of links', function () {
+  'use strict';
+  
+  it('with a single value', function (done) {
+    expect(helpers.linkify('/', 'Products')).toBe('&lt;a href="/Products"&gt;Products&lt;/a&gt;');
+    done();
+  });
+  
+  it('with a single index array', function (done) {
+    expect(helpers.linkify('/', ['Products'])[0]).toBe('&lt;a href="/Products"&gt;Products&lt;/a&gt;');
+    expect(helpers.linkify('/', ['Products']).length).toBe(1);
+    done();
+  });
+  
+  it('with a multi index array', function (done) {
+    expect(helpers.linkify('/', ['Products', 'Blog'])[0]).toBe('&lt;a href="/Products"&gt;Products&lt;/a&gt;');
+    expect(helpers.linkify('/', ['Products', 'Blog'])[1]).toBe('&lt;a href="/Blog"&gt;Blog&lt;/a&gt;');
+    expect(helpers.linkify('/', ['Products', 'Blog']).length).toBe(2);
+    done();
+  });
+  
+  it('with a full URL to prepend', function (done) {
+    expect(helpers.linkify('http://example.com/', ['Products', 'Blog'])[0]).toBe('&lt;a href="http://example.com/Products"&gt;Products&lt;/a&gt;');
+    expect(helpers.linkify('http://example.com/', ['Products', 'Blog'])[1]).toBe('&lt;a href="http://example.com/Blog"&gt;Blog&lt;/a&gt;');
+    expect(helpers.linkify('http://example.com/', ['Products', 'Blog']).length).toBe(2);
+    done();
+  });
+});
+&nbsp;
+&nbsp;
+describe('It should pluralize an English word', function () {
+  'use strict';
+  
+  it('with a boolean check', function (done) {
+    expect(helpers.pluralize('dog', true)).toBe('dogs');
+    expect(helpers.pluralize('dog', false)).toBe('dog');
+    done();
+  });
+  
+  it('with an array check', function (done) {
+    expect(helpers.pluralize('dog', ['Spot', 'Fido'])).toBe('dogs');
+    expect(helpers.pluralize('dog', ['Spot'])).toBe('dog');
+    expect(helpers.pluralize('dog', [])).toBe('dogs');
+    done();
+  });
+  
+  it('with a number check', function (done) {
+    expect(helpers.pluralize('dog', 2)).toBe('dogs');
+    expect(helpers.pluralize('dog', 1)).toBe('dog');
+    expect(helpers.pluralize('dog', 0)).toBe('dogs');
+    done();
+  });
+  
+  it('with an object check', function (done) {
+    expect(helpers.pluralize('dog', { Spot: 'Pitbull', Fido: 'Corgi' })).toBe('dogs');
+    expect(helpers.pluralize('dog', { Spot: 'Pitbull' })).toBe('dog');
+    expect(helpers.pluralize('dog', {})).toBe('dogs');
+    done();
+  });
+  
+  it('with the check missing', function (done) {
+    expect(helpers.pluralize('dog')).toBe('dog');
+    done();
+  });
+  
+  it('with a word ending in "y" that should be "ies"', function (done) {
+    expect(helpers.pluralize('category', true )).toBe('categories');
+    expect(helpers.pluralize('city', true )).toBe('cities');
+    expect(helpers.pluralize('country', true )).toBe('countries');
+    done();
+  });
+  
+  it('with a word ending in "y" that should be "s"', function (done) {
+    expect(helpers.pluralize('carboy', true )).toBe('carboys');
+    expect(helpers.pluralize('monkey', true )).toBe('monkeys');
+    done();
+  });
+  
+  it('with a word ending in "ch" that should be "es"', function (done) {
+    expect(helpers.pluralize('church', true )).toBe('churches');
+    expect(helpers.pluralize('lunch', true )).toBe('lunches');
+    done();
+  });
+  
+  it('with a word ending in "s" that should be "es"', function (done) {
+    expect(helpers.pluralize('kiss', true )).toBe('kisses');
+    expect(helpers.pluralize('miss', true )).toBe('misses');
+    done();
+  });
+  
+  it('with a word ending in "o" that should be "es"', function (done) {
+    expect(helpers.pluralize('potato', true )).toBe('potatoes');
+    expect(helpers.pluralize('radio', true )).toBe('radios');
+    done();
+  });
+  
+  it('with a regular plural ending', function (done) {
+    expect(helpers.pluralize('cat', true )).toBe('cats');
+    expect(helpers.pluralize('pika', true )).toBe('pikas');
+    expect(helpers.pluralize('book', true )).toBe('books');
+    done();
+  });
+  
+  it('with an irregular plural ending', function (done) {
+    expect(helpers.pluralize('loaf', true )).toBe('loaves');
+    expect(helpers.pluralize('goose', true )).toBe('geese');
+    expect(helpers.pluralize('mouse', true )).toBe('mice');
+    expect(helpers.pluralize('deer', true )).toBe('deer');
+    done();
+  });
+  
+  it('with a custom dictionary', function (done) {
+    var dict = { fish: 'fishies', cat: 'kitties' };
+    expect(helpers.pluralize('fish', true)).toBe('fish');
+    expect(helpers.pluralize('cat', true)).toBe('cats');
+    expect(helpers.pluralize('fish', true, dict)).toBe('fishies');
+    expect(helpers.pluralize('cat', true, dict)).toBe('kitties');
+    expect(helpers.pluralize('dog', true, dict)).toBe('dogs');
+    done();
+  });
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 27 2015 14:27:17 GMT-0600 (MDT)</div>
+</div>
+
+<script src="../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

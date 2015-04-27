@@ -121,16 +121,16 @@ describe('unescape the HTML input', function () {
   it('with multiple " codes', function (done) {
     expect(helpers.unescape('&quot;&quot;')).toBe('""');
     done();
-  
+  });
+
   it('with a single ` code', function (done) {
-    expect(helpers.escape('&#x60;')).toBe('`');
+    expect(helpers.unescape('&#x60;')).toBe('`');
     done();
   });
   
   it('with multiple ` codes', function (done) {
-    expect(helpers.escape('&#x60;&#x60;')).toBe('``');
+    expect(helpers.unescape('&#x60;&#x60;')).toBe('``');
     done();
-  });
   });
   
   it('with a typical escaped link', function (done) {
