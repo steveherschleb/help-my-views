@@ -153,6 +153,7 @@ Have a cool and helpful view helper you'd like to add? Perfect! Fork and send a 
 
 ## Release History
 
+* 0.1.1 Add some tests for edge cases. Add coverage report. 
 * 0.1.0 Initial release
 
 
